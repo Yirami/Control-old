@@ -5,9 +5,9 @@ Air cooling power control
 ---
 ## 说明
 设定多级PWM调速，通过按键手动调节抽风机功率。  
-`/src-asm`中为汇编源代码；  
-`/src-c`中为C源代码。
-`/details`中为一些细节图片。
+`./src-asm`中为汇编源代码； 
+`./src-c`中为C源代码。  
+`./details`中为一些细节图片。
 
 ---
 ## 细节
