@@ -1,0 +1,155 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        08/05/2014  14:28:50  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+D:\[ E S ]KEIL\C51\BIN\BL51.EXE fans.obj TO fans RAMSIZE (256)
+
+
+INPUT MODULES INCLUDED:
+  fans.obj (FANS)
+
+
+LINK MAP OF MODULE:  fans (FANS)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     01B5H     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  fans (FANS)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        FANS
+  C:0106H         SYMBOL        CHUSHI0
+  C:011DH         SYMBOL        CHUSHI1
+  C:0192H         SYMBOL        DELAY
+  D:00A8H         SYMBOL        IE
+  D:00B8H         SYMBOL        IP
+  D:00B7H         SYMBOL        IPH
+  C:012EH         SYMBOL        KEY0
+  C:0134H         SYMBOL        KEY01
+  C:013CH         SYMBOL        KEY02
+  C:014AH         SYMBOL        KEY03
+  C:0152H         SYMBOL        KEY1
+  C:0158H         SYMBOL        KEY11
+  C:0160H         SYMBOL        KEY12
+  C:016EH         SYMBOL        KEY13
+  C:017BH         SYMBOL        KEY14
+  C:0194H         SYMBOL        LOOP
+  C:0100H         SYMBOL        MAIN
+  D:0090H         SYMBOL        P1
+  D:00B0H         SYMBOL        P3
+  I:0080H         SYMBOL        PWM
+  C:019DH         SYMBOL        PWMH
+  C:01A9H         SYMBOL        PWML
+  D:008CH         SYMBOL        TH0
+  D:008DH         SYMBOL        TH1
+  C:017CH         SYMBOL        TIME0
+  C:018BH         SYMBOL        TIME1
+  D:008AH         SYMBOL        TL0
+  D:008BH         SYMBOL        TL1
+  D:0089H         SYMBOL        TMOD
+  B:0088H.4       SYMBOL        TR0
+BL51 BANKED LINKER/LOCATER V6.22                                                      08/05/2014  14:28:50  PAGE 2
+
+
+  B:0088H.6       SYMBOL        TR1
+  C:0000H         LINE#         8
+  C:0003H         LINE#         10
+  C:000BH         LINE#         12
+  C:0013H         LINE#         14
+  C:001BH         LINE#         16
+  C:0100H         LINE#         22
+  C:0102H         LINE#         23
+  C:0104H         LINE#         24
+  C:0106H         LINE#         29
+  C:0108H         LINE#         30
+  C:010AH         LINE#         31
+  C:010DH         LINE#         32
+  C:0110H         LINE#         33
+  C:0113H         LINE#         34
+  C:0116H         LINE#         35
+  C:0119H         LINE#         36
+  C:011CH         LINE#         37
+  C:011DH         LINE#         39
+  C:011FH         LINE#         40
+  C:0120H         LINE#         41
+  C:0123H         LINE#         42
+  C:0124H         LINE#         43
+  C:0126H         LINE#         44
+  C:0127H         LINE#         45
+  C:012AH         LINE#         46
+  C:012BH         LINE#         47
+  C:012DH         LINE#         48
+  C:012EH         LINE#         53
+  C:0130H         LINE#         54
+  C:0133H         LINE#         55
+  C:0134H         LINE#         57
+  C:0136H         LINE#         58
+  C:0139H         LINE#         59
+  C:013CH         LINE#         61
+  C:013EH         LINE#         62
+  C:0141H         LINE#         63
+  C:0143H         LINE#         64
+  C:0145H         LINE#         65
+  C:0147H         LINE#         66
+  C:0149H         LINE#         67
+  C:014AH         LINE#         69
+  C:014CH         LINE#         70
+  C:014DH         LINE#         71
+  C:014FH         LINE#         72
+  C:0151H         LINE#         73
+  C:0152H         LINE#         78
+  C:0154H         LINE#         79
+  C:0157H         LINE#         80
+  C:0158H         LINE#         82
+  C:015AH         LINE#         83
+  C:015DH         LINE#         84
+  C:0160H         LINE#         86
+  C:0162H         LINE#         87
+  C:0165H         LINE#         88
+  C:0167H         LINE#         89
+  C:0169H         LINE#         90
+BL51 BANKED LINKER/LOCATER V6.22                                                      08/05/2014  14:28:50  PAGE 3
+
+
+  C:016BH         LINE#         91
+  C:016DH         LINE#         92
+  C:016EH         LINE#         94
+  C:0170H         LINE#         95
+  C:0172H         LINE#         96
+  C:0174H         LINE#         97
+  C:0175H         LINE#         98
+  C:0178H         LINE#         99
+  C:017AH         LINE#         100
+  C:017BH         LINE#         102
+  C:017CH         LINE#         107
+  C:017EH         LINE#         108
+  C:0180H         LINE#         109
+  C:0183H         LINE#         110
+  C:0186H         LINE#         111
+  C:0188H         LINE#         112
+  C:018AH         LINE#         113
+  C:018BH         LINE#         118
+  C:018DH         LINE#         119
+  C:018FH         LINE#         120
+  C:0191H         LINE#         121
+  C:0192H         LINE#         126
+  C:0194H         LINE#         128
+  C:0196H         LINE#         129
+  C:0198H         LINE#         130
+  C:019AH         LINE#         131
+  C:019CH         LINE#         132
+  -------         ENDMOD        FANS
+
+Program Size: data=8.0 xdata=0 code=437
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

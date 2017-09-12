@@ -1,0 +1,232 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        08/05/2014  14:33:26  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+D:\[ E S ]KEIL\C51\BIN\BL51.EXE fans.obj TO fans RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  fans.obj (FANS)
+  D:\[ E S ]KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  fans (FANS)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0001H     UNIT         ?DT?FANS
+            IDATA   0009H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0003H     ABSOLUTE     
+            CODE    0006H     0005H     UNIT         ?PR?MAIN?FANS
+            CODE    000BH     0003H     ABSOLUTE     
+                    000EH     0005H                  *** GAP ***
+            CODE    0013H     0003H     ABSOLUTE     
+                    0016H     0005H                  *** GAP ***
+            CODE    001BH     0003H     ABSOLUTE     
+            CODE    001EH     004AH     UNIT         ?PR?J_JIAN?FANS
+            CODE    0068H     0047H     UNIT         ?PR?J_JIA?FANS
+            CODE    00AFH     0026H     UNIT         ?PR?INIT?FANS
+            CODE    00D5H     0021H     UNIT         ?PR?OFF_FANS?FANS
+            CODE    00F6H     001EH     UNIT         ?PR?_DELAY?FANS
+            CODE    0114H     0018H     UNIT         ?CO?FANS
+            CODE    012CH     000FH     UNIT         ?PR?ON_FANS?FANS
+            CODE    013BH     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   fans (FANS)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?PR?J_JIA?FANS
+  +--> ?PR?_DELAY?FANS
+
+*** NEW ROOT ***************************************************
+
+?PR?J_JIAN?FANS
+  +--> ?PR?_DELAY?FANS
+
+*** NEW ROOT ***************************************************
+BL51 BANKED LINKER/LOCATER V6.22                                                      08/05/2014  14:33:26  PAGE 2
+
+
+
+?PR?OFF_FANS?FANS
+  +--> ?CO?FANS
+
+*** NEW ROOT ***************************************************
+
+?C_C51STARTUP
+  +--> ?PR?MAIN?FANS
+
+?PR?MAIN?FANS
+  +--> ?PR?INIT?FANS
+
+?PR?INIT?FANS
+  +--> ?CO?FANS
+
+
+
+SYMBOL TABLE OF MODULE:  fans (FANS)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        FANS
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:0068H         PUBLIC        j_jia
+  D:0090H         PUBLIC        P1
+  D:00B0H         PUBLIC        P3
+  D:00A8H         PUBLIC        IE
+  C:00F6H         PUBLIC        _delay
+  D:00B8H         PUBLIC        IP
+  B:00B0H.3       PUBLIC        jian
+  C:0006H         PUBLIC        main
+  B:0090H.0       PUBLIC        fans
+  D:0098H         PUBLIC        SCON
+  B:00B0H.2       PUBLIC        jia
+  D:0089H         PUBLIC        TMOD
+  D:0088H         PUBLIC        TCON
+  C:00AFH         PUBLIC        init
+  C:0114H         PUBLIC        pwmh
+  C:0120H         PUBLIC        pwml
+  C:00D5H         PUBLIC        off_fans
+  D:008CH         PUBLIC        TH0
+  D:008DH         PUBLIC        TH1
+  D:008AH         PUBLIC        TL0
+  D:008BH         PUBLIC        TL1
+  D:0008H         PUBLIC        pwm
+  B:0088H.4       PUBLIC        TR0
+  B:0088H.6       PUBLIC        TR1
+  B:0090H.2       PUBLIC        jianled
+  D:00B7H         PUBLIC        IPH
+  D:00C8H         PUBLIC        T2CON
+  C:012CH         PUBLIC        on_fans
+  B:0090H.1       PUBLIC        jialed
+  C:001EH         PUBLIC        j_jian
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        z
+BL51 BANKED LINKER/LOCATER V6.22                                                      08/05/2014  14:33:26  PAGE 3
+
+
+  -------         DO            
+  D:0006H         SYMBOL        x
+  D:0004H         SYMBOL        y
+  -------         ENDDO         
+  C:00F6H         LINE#         2
+  C:00F6H         LINE#         3
+  C:00F6H         LINE#         5
+  C:00FFH         LINE#         6
+  C:0113H         LINE#         7
+  -------         ENDPROC       _DELAY
+  -------         PROC          J_JIA
+  C:0068H         LINE#         8
+  C:0077H         LINE#         10
+  C:007EH         LINE#         11
+  C:0081H         LINE#         12
+  C:0081H         LINE#         13
+  C:0084H         LINE#         14
+  C:0089H         LINE#         15
+  C:0089H         LINE#         16
+  C:008BH         LINE#         17
+  C:008DH         LINE#         18
+  C:008FH         LINE#         19
+  C:0091H         LINE#         20
+  C:0093H         LINE#         22
+  C:0093H         LINE#         23
+  C:009AH         LINE#         24
+  C:009AH         LINE#         25
+  C:009CH         LINE#         26
+  C:009EH         LINE#         28
+  C:009EH         LINE#         29
+  C:00A0H         LINE#         30
+  C:00A2H         LINE#         31
+  C:00A2H         LINE#         32
+  C:00A2H         LINE#         33
+  C:00A2H         LINE#         34
+  -------         ENDPROC       J_JIA
+  -------         PROC          ON_FANS
+  C:012CH         LINE#         35
+  C:012CH         LINE#         37
+  C:012EH         LINE#         38
+  C:0130H         LINE#         39
+  C:0133H         LINE#         40
+  C:0136H         LINE#         41
+  C:0138H         LINE#         42
+  C:013AH         LINE#         43
+  -------         ENDPROC       ON_FANS
+  -------         PROC          J_JIAN
+  C:001EH         LINE#         44
+  C:002DH         LINE#         46
+  C:0034H         LINE#         47
+  C:0037H         LINE#         48
+  C:0037H         LINE#         49
+  C:003AH         LINE#         50
+  C:003EH         LINE#         51
+  C:003EH         LINE#         52
+  C:0040H         LINE#         53
+  C:0042H         LINE#         54
+BL51 BANKED LINKER/LOCATER V6.22                                                      08/05/2014  14:33:26  PAGE 4
+
+
+  C:0044H         LINE#         55
+  C:0046H         LINE#         56
+  C:0048H         LINE#         58
+  C:0048H         LINE#         59
+  C:0050H         LINE#         60
+  C:0050H         LINE#         61
+  C:0052H         LINE#         62
+  C:0054H         LINE#         63
+  C:0056H         LINE#         65
+  C:0056H         LINE#         66
+  C:0059H         LINE#         67
+  C:005BH         LINE#         68
+  C:005BH         LINE#         69
+  C:005BH         LINE#         70
+  C:005BH         LINE#         71
+  -------         ENDPROC       J_JIAN
+  -------         PROC          OFF_FANS
+  C:00D5H         LINE#         72
+  C:00DBH         LINE#         74
+  C:00DDH         LINE#         75
+  C:00DFH         LINE#         76
+  C:00E7H         LINE#         77
+  C:00EFH         LINE#         78
+  -------         ENDPROC       OFF_FANS
+  -------         PROC          INIT
+  C:00AFH         LINE#         79
+  C:00AFH         LINE#         80
+  C:00AFH         LINE#         81
+  C:00B2H         LINE#         82
+  C:00B5H         LINE#         83
+  C:00B8H         LINE#         84
+  C:00BBH         LINE#         85
+  C:00BEH         LINE#         86
+  C:00C1H         LINE#         87
+  C:00C4H         LINE#         88
+  C:00CCH         LINE#         89
+  C:00D4H         LINE#         90
+  -------         ENDPROC       INIT
+  -------         PROC          MAIN
+  C:0006H         LINE#         91
+  C:0006H         LINE#         92
+  C:0006H         LINE#         93
+  C:0009H         LINE#         94
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        FANS
+
+Program Size: data=10.0 xdata=0 code=317
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

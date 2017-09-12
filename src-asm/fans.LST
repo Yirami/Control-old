@@ -1,0 +1,202 @@
+A51 MACRO ASSEMBLER  FANS                                                                 08/05/2014 14:28:49 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02a
+OBJECT MODULE PLACED IN fans.OBJ
+ASSEMBLER INVOKED BY: D:\[ E S ]KEIL\C51\BIN\A51.EXE fans.asm SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     
+                       2     
+                       3     
+                       4     
+  0080                 5     PWM IDATA 80H                    
+  00B7                 6     IPH DATA 0B7H                    
+0000                   7     ORG 0000H                        
+0000 2100              8     AJMP MAIN                        
+0003                   9     ORG 0003H                                
+0003 212E             10     AJMP KEY0                        
+000B                  11     ORG 000BH                        
+000B 217C             12     AJMP TIME0                       
+0013                  13     ORG 0013H                        
+0013 2152             14     AJMP KEY1                        
+001B                  15     ORG 001BH                        
+001B 218B             16     AJMP TIME1                       
+0100                  17     ORG 0100H                        
+                      18     
+                      19     
+                      20     
+0100                  21     MAIN:             
+0100 3106             22     CALL CHUSHI0                     
+0102 311D             23     CALL CHUSHI1                     
+0104 80FE             24     sjmp $
+                      25     
+                      26     
+                      27     
+0106                  28     CHUSHI0:
+0106 7980             29     MOV R1,#80H                             
+0108 7700             30     MOV @R1,#00H                     
+010A 758911           31     MOV TMOD,#00010001B              
+010D 75A88F           32     MOV IE,#10001111B                
+0110 75B802           33     MOV IP,#00000010B               
+0113 75B70A           34     MOV IPH,#00001010B               
+0116 758CD8           35     MOV TH0,#0D8H                    
+0119 758AEF           36     MOV TL0,#0EFH                    
+011C 22               37     RET
+011D                  38     CHUSHI1:
+011D 7980             39     MOV R1,#PWM                             
+011F E7               40     MOV A,@R1
+0120 90019D           41     MOV DPTR,#PWMH               
+0123 93               42     MOVC A,@A+DPTR                   
+0124 F58D             43     MOV TH1,A                                
+0126 E7               44     MOV A,@R1
+0127 9001A9           45     MOV DPTR,#PWML                   
+012A 93               46     MOVC A,@A+DPTR                   
+012B F58B             47     MOV TL1,A                                
+012D 22               48     RET
+                      49     
+                      50     
+                      51     
+012E                  52     KEY0:                    
+012E 3192             53     CALL DELAY                   
+0130 30B201           54     JNB P3.2,KEY01               
+0133 32               55     RETI
+0134                  56     KEY01:
+0134 3192             57     CALL DELAY                               
+0136 20B203           58     JB P3.2,KEY02                    
+A51 MACRO ASSEMBLER  FANS                                                                 08/05/2014 14:28:49 PAGE     2
+
+0139 30B2F8           59     JNB P3.2,KEY01               
+013C                  60     KEY02:
+013C 7980             61     MOV R1,#PWM
+013E B70B09           62     CJNE @R1,#0BH,KEY03              
+0141 C28C             63     CLR TR0                                  
+0143 C28E             64     CLR TR1                                  
+0145 C290             65     CLR P1.0                                 
+0147 C291             66     CLR P1.1                                 
+0149 32               67     RETI
+014A                  68     KEY03:
+014A 7980             69     MOV R1,#PWM                             
+014C 07               70     INC @R1                                  
+014D D292             71     SETB P1.2                                
+014F D28C             72     SETB TR0                                 
+0151 32               73     RETI
+                      74     
+                      75     
+                      76     
+0152                  77     KEY1:                    
+0152 3192             78     CALL DELAY                   
+0154 30B301           79     JNB P3.3,KEY11                   
+0157 32               80     RETI
+0158                  81     KEY11:
+0158 3192             82     CALL DELAY                               
+015A 20B303           83     JB P3.3,KEY12                    
+015D 30B3F8           84     JNB P3.3,KEY11                   
+0160                  85     KEY12:
+0160 7980             86     MOV R1,#PWM
+0162 B70009           87     CJNE @R1,#00H,KEY13              
+0165 C28C             88     CLR TR0                              
+0167 C28E             89     CLR TR1                          
+0169 D290             90     SETB P1.0                                
+016B D292             91     SETB P1.2                                
+016D 32               92     RETI 
+016E                  93     KEY13:
+016E D291             94     SETB P1.1                                
+0170 D28C             95     SETB TR0                                 
+0172 7980             96     MOV R1,#PWM                              
+0174 17               97     DEC @R1                                  
+0175 B70003           98     CJNE @R1,#00H,KEY14              
+0178 C292             99     CLR P1.2                                 
+017A 32              100     RETI
+017B                 101     KEY14:
+017B 32              102     RETI
+                     103     
+                     104     
+                     105     
+017C                 106     TIME0:                           
+017C C290            107     CLR P1.0                         
+017E C28C            108     CLR TR0
+0180 758CD8          109     MOV TH0,#0D8H                    
+0183 758AEF          110     MOV TL0,#0EFH                    
+0186 D28C            111     SETB TR0
+0188 D28E            112     SETB TR1                                 
+018A 32              113     RETI                                     
+                     114     
+                     115     
+                     116     
+018B                 117     TIME1:                           
+018B D290            118     SETB P1.0                        
+018D C28E            119     CLR TR1                                  
+018F 311D            120     CALL CHUSHI1                     
+0191 32              121     RETI                                     
+                     122     
+                     123     
+                     124     
+A51 MACRO ASSEMBLER  FANS                                                                 08/05/2014 14:28:49 PAGE     3
+
+0192                 125     DELAY:            
+0192 7F0A            126     MOV R7, #0AH                     
+0194                 127     LOOP:
+0194 7E00            128     MOV R6, #0B       
+0196 DEFE            129     DJNZ R6, $                               
+0198 DEFE            130     DJNZ R6, $                               
+019A DFF8            131     DJNZ R7, LOOP                    
+019C 22              132     RET
+                     133     
+                     134     
+                     135     
+019D                 136     PWMH:
+019D F0EEECEA        137     DB 0F0H,0EEH,0ECH,0EAH,0E8H,0E6H,0E4H,0E2H,0E0H,0DEH,0DCH,0DAH
+01A1 E8E6E4E2                
+01A5 E0DEDCDA                
+01A9                 138     PWML:
+01A9 5F6B7783        139     DB 5FH,6BH,77H,83H,8FH,9BH,0A7H,0B3H,0BFH,0CBH,0D7H,0E3H
+01AD 8F9BA7B3                
+01B1 BFCBD7E3                
+                     140     END
+A51 MACRO ASSEMBLER  FANS                                                                 08/05/2014 14:28:49 PAGE     4
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+CHUSHI0. . . . . .  C ADDR   0106H   A   
+CHUSHI1. . . . . .  C ADDR   011DH   A   
+DELAY. . . . . . .  C ADDR   0192H   A   
+IE . . . . . . . .  D ADDR   00A8H   A   
+IP . . . . . . . .  D ADDR   00B8H   A   
+IPH. . . . . . . .  D ADDR   00B7H   A   
+KEY0 . . . . . . .  C ADDR   012EH   A   
+KEY01. . . . . . .  C ADDR   0134H   A   
+KEY02. . . . . . .  C ADDR   013CH   A   
+KEY03. . . . . . .  C ADDR   014AH   A   
+KEY1 . . . . . . .  C ADDR   0152H   A   
+KEY11. . . . . . .  C ADDR   0158H   A   
+KEY12. . . . . . .  C ADDR   0160H   A   
+KEY13. . . . . . .  C ADDR   016EH   A   
+KEY14. . . . . . .  C ADDR   017BH   A   
+LOOP . . . . . . .  C ADDR   0194H   A   
+MAIN . . . . . . .  C ADDR   0100H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+P3 . . . . . . . .  D ADDR   00B0H   A   
+PWM. . . . . . . .  I ADDR   0080H   A   
+PWMH . . . . . . .  C ADDR   019DH   A   
+PWML . . . . . . .  C ADDR   01A9H   A   
+TH0. . . . . . . .  D ADDR   008CH   A   
+TH1. . . . . . . .  D ADDR   008DH   A   
+TIME0. . . . . . .  C ADDR   017CH   A   
+TIME1. . . . . . .  C ADDR   018BH   A   
+TL0. . . . . . . .  D ADDR   008AH   A   
+TL1. . . . . . . .  D ADDR   008BH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR0. . . . . . . .  B ADDR   0088H.4 A   
+TR1. . . . . . . .  B ADDR   0088H.6 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

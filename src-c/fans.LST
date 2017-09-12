@@ -1,0 +1,120 @@
+C51 COMPILER V9.05   FANS                                                                  08/05/2014 14:33:26 PAGE 1   
+
+
+C51 COMPILER V9.05, COMPILATION OF MODULE FANS
+OBJECT MODULE PLACED IN fans.OBJ
+COMPILER INVOKED BY: D:\[ E S ]KEIL\C51\BIN\C51.EXE fans.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include<fans.h>
+   2          void delay(uint z)
+   3          {
+   4   1              uint x,y;
+   5   1              for(x=z;x>0;x--)
+   6   1                      for(y=110;y>0;y--);
+   7   1      }
+   8          void j_jia() interrupt  0
+   9          {
+  10   1              delay(5);
+  11   1              if(jia==0)
+  12   1              {
+  13   2                      while(jia==0);
+  14   2                      if(pwm==0x0b)
+  15   2                      {
+  16   3                              TR0=0;
+  17   3                              TR1=0;
+  18   3                              fans=0;
+  19   3                              jialed=0;
+  20   3                      }
+  21   2                      else
+  22   2                      {
+  23   3                              if((pwm==0x00)&&(TR0==0))
+  24   3                              {
+  25   4                                      TR0=1;
+  26   4                              }
+  27   3                              else
+  28   3                              {                
+  29   4                                      pwm++;
+  30   4                                      jianled=1;
+  31   4                              }
+  32   3                      }
+  33   2              }
+  34   1      }
+  35          void on_fans() interrupt        1
+  36          {
+  37   1              fans=0;
+  38   1              TR0=0;
+  39   1              TH0=0xd8;
+  40   1              TL0=0xef;
+  41   1              TR0=1;
+  42   1              TR1=1;
+  43   1      }
+  44          void j_jian() interrupt 2
+  45          {
+  46   1              delay(5);
+  47   1              if(jian==0)
+  48   1              {
+  49   2                      while(jian==0);
+  50   2                      if(pwm==0x00)
+  51   2                      {
+  52   3                              TR0=0;
+  53   3                              TR1=0;
+  54   3                              fans=1;
+  55   3                              jianled=1;
+C51 COMPILER V9.05   FANS                                                                  08/05/2014 14:33:26 PAGE 2   
+
+  56   3                      }
+  57   2                      else
+  58   2                      {
+  59   3                              if((pwm==0x0b)&&(TR0==0))
+  60   3                              {
+  61   4                                      TR0=1;
+  62   4                                      jialed=1;
+  63   4                              }
+  64   3                              else
+  65   3                              {
+  66   4                                      pwm--;
+  67   4                                      if(pwm==0x00)jianled=0;
+  68   4                              }
+  69   3                      }
+  70   2              }
+  71   1      }
+  72          void off_fans() interrupt       3
+  73          {
+  74   1              fans=1;
+  75   1              TR1=0;
+  76   1              TH1=pwmh[pwm];
+  77   1              TL1=pwml[pwm];
+  78   1      }
+  79          void init()
+  80          {
+  81   1              TMOD=0x11;
+  82   1              IE=0x8f;
+  83   1              IP=0x02;
+  84   1              IPH=0x0a;
+  85   1              TH0=0xd8;
+  86   1              TL0=0xef;
+  87   1              pwm=0x00;
+  88   1              TH1=pwmh[pwm];
+  89   1              TL1=pwml[pwm];
+  90   1      }
+  91          void main()
+  92          {
+  93   1              init();
+  94   1              while(1);
+  95   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    266    ----
+   CONSTANT SIZE    =     24    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      1    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

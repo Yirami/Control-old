@@ -1,0 +1,95 @@
+#include<fans.h>
+void delay(uint z)
+{
+	uint x,y;
+	for(x=z;x>0;x--)
+		for(y=110;y>0;y--);
+}
+void j_jia() interrupt	0
+{
+	delay(5);
+	if(jia==0)
+	{
+		while(jia==0);
+		if(pwm==0x0b)
+		{
+			TR0=0;
+			TR1=0;
+			fans=0;
+			jialed=0;
+		}
+		else
+		{
+			if((pwm==0x00)&&(TR0==0))
+			{
+				TR0=1;
+			}
+			else
+			{		 
+				pwm++;
+				jianled=1;
+			}
+		}
+	}
+}
+void on_fans() interrupt	1
+{
+	fans=0;
+	TR0=0;
+	TH0=0xd8;
+	TL0=0xef;
+	TR0=1;
+	TR1=1;
+}
+void j_jian() interrupt	2
+{
+	delay(5);
+	if(jian==0)
+	{
+		while(jian==0);
+		if(pwm==0x00)
+		{
+			TR0=0;
+			TR1=0;
+			fans=1;
+			jianled=1;
+		}
+		else
+		{
+			if((pwm==0x0b)&&(TR0==0))
+			{
+				TR0=1;
+				jialed=1;
+			}
+			else
+			{
+				pwm--;
+				if(pwm==0x00)jianled=0;
+			}
+		}
+	}
+}
+void off_fans() interrupt	3
+{
+	fans=1;
+	TR1=0;
+	TH1=pwmh[pwm];
+	TL1=pwml[pwm];
+}
+void init()
+{
+	TMOD=0x11;
+	IE=0x8f;
+	IP=0x02;
+	IPH=0x0a;
+	TH0=0xd8;
+	TL0=0xef;
+	pwm=0x00;
+	TH1=pwmh[pwm];
+	TL1=pwml[pwm];
+}
+void main()
+{
+	init();
+	while(1);
+}
