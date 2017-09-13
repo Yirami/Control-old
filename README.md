@@ -1,6 +1,7 @@
 # Control-old
 Air cooling power control  
-用于风冷散热的控制器。
+用于风冷散热的控制器。  
+PS：此版用于风冷，下一版用于[水冷](https://github.com/Yirami/Control-new)
 
 ---
 ## 说明
@@ -21,5 +22,6 @@ Air cooling power control
 + 接线细节  
 ![接线细节图](https://i.loli.net/2017/09/12/59b74e03746c6.jpg)
 + 整体效果  
-![整体图1](https://i.loli.net/2017/09/12/59b74e09d69ee.jpg)
+![整体图1](https://i.loli.net/2017/09/12/59b74e09d69ee.jpg)  
+贴片LED在洞洞板上只能搞反面，○|￣|_ ，我也没辙。。。  
 ![整体图2](https://i.loli.net/2017/09/12/59b74e0a8b294.jpg)
